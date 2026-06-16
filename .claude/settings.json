@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import sys,json; print\\(json.load\\(sys.stdin\\)['data']['reply']\\)\")",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Test User\",\"email\":\"test@example.com\",\"message\":\"Testing email ticket system\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Test User\",\"email\":\"test@example.com\",\"phone\":\"07700900000\",\"company\":\"Test Co\",\"message\":\"Testing the ticket email system\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Jane Smith\",\"email\":\"jane@example.com\",\"phone\":\"07700900000\",\"company\":\"Acme Ltd\",\"message\":\"I need IT support for my office\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Jane Smith\",\"email\":\"jane@example.com\",\"message\":\"I need IT support\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Binura\",\"email\":\"binurathiranjaya@gmail.com\",\"message\":\"I need IT support\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Binura\",\"email\":\"binurathiranjaya@gmail.com\",\"message\":\"Testing live ticket platform\"}')",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"Subject\":\"Test\",\"Content\":\"Test content\",\"SenderEmail\":\"binurathiranjaya@gmail.com\",\"SenderName\":\"Binura\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s https://ticketflow-api.azurewebsites.net/health -w \"\\\\nHTTP: %{http_code}\\\\n\")",
+      "Bash(curl -s https://ticketflow-api.azurewebsites.net/swagger/index.html -w \"\\\\nHTTP: %{http_code}\\\\n\")",
+      "Bash(curl -s https://ticketflow-api.azurewebsites.net/api/tickets -w \"\\\\nHTTP: %{http_code}\\\\n\")",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"subject\":\"Test Ticket\",\"content\":\"Name: Binura\\\\nEmail: binurathiranjaya@gmail.com\\\\nMessage: Testing\",\"senderEmail\":\"binurathiranjaya@gmail.com\",\"senderName\":\"Binura\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"senderEmail\":\"test@test.com\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s https://ticketflow-api.azurewebsites.net/api/tickets/1 -w \"\\\\nHTTP STATUS: %{http_code}\")",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"subject\":\"[#TEST] Contact Request\",\"content\":\"Name: Binura\\\\nEmail: binurathiranjaya@gmail.com\\\\nMessage: Testing the ticket system\",\"senderEmail\":\"binurathiranjaya@gmail.com\",\"senderName\":\"Binura\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"subject\":\"Test\",\"content\":\"Test content\",\"senderEmail\":\"binurathiranjaya@gmail.com\",\"senderName\":\"Binura\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{ *)",
+      "Bash(curl -s -X POST https://ticketflow-api.azurewebsites.net/api/tickets -H 'Content-Type: application/json' -d '{\"senderEmail\":\"binurathiranjaya@gmail.com\",\"senderName\":\"Binura\",\"subject\":\"[#TEST] Contact Request\",\"content\":\"Name: Binura\\\\nEmail: binurathiranjaya@gmail.com\\\\nMessage: Testing\"}' -w '\\\\nHTTP STATUS: %{http_code}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Binura\",\"email\":\"binurathiranjaya@gmail.com\",\"phone\":\"07700900000\",\"company\":\"Test Co\",\"message\":\"I need IT support for my office\"}')",
+      "Bash(curl -s -X POST http://localhost:5001/contact -H 'Content-Type: application/json' -d '{\"name\":\"Binura\",\"email\":\"binurathiranjaya@gmail.com\",\"message\":\"Need IT support\"}')",
+      "Bash(docker start *)",
+      "Bash(flask run *)",
+      "Bash(curl -s http://localhost:5001/api/health)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s http://localhost:5001/api/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"hi\",\"session_id\":null}')",
+      "Bash(.venv/bin/flask routes *)",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"hi\",\"session_id\":null}')",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"who is the owner\",\"session_id\":null}')",
+      "Bash(curl -s http://localhost:5001/healthz)",
+      "Bash(curl -s http://localhost:5001/admin/login -X POST -H \"Content-Type: application/json\" -d '{\"email\":\"admin@ia.uk\",\"password\":\"Admin@1234\"}')",
+      "Bash(curl -s http://localhost:5001/admin/login -X POST -H \"Content-Type: application/json\" -d '{\"email\":\"admin@internetassist.co.uk\",\"password\":\"Admin@1234\"}')",
+      "Bash(curl -s http://localhost:5001/admin/login -X POST -H \"Content-Type: application/json\" -d '{\"email\":\"admin@internetassist.co.uk\",\"password\":\"ChangeMe123!\"}')",
+      "Bash(curl -s http://localhost:5001/readyz)",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"hello\",\"session_id\":null}')",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"I want to apply for a job\",\"session_id\":null}')",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"I need remote support help\",\"session_id\":null}')",
+      "Bash(curl -s http://localhost:5001/chat -X POST -H \"Content-Type: application/json\" -d '{\"message\":\"I want to get a quote for IT services\",\"session_id\":null}')"
+    ]
+  }
+}

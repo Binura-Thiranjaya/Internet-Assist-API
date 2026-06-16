@@ -1,0 +1,30 @@
+# Environment — never commit real secrets
+.env
+.env.production
+# Keep the template in source control:
+# !.env.production   ← uncomment if you want the template committed
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Flask / instance
+instance/
+*.sqlite3
+
+# Uploads
+/tmp/
+
+# IDE
+.vscode/
+.idea/
+*.swp

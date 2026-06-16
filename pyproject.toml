@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "internet-assist-api"
+version = "0.1.0"
+description = "Internet Assist Flask 3 REST API"
+requires-python = ">=3.12"
+dependencies = [
+  "Flask>=3.0,<4.0",
+  "flask-smorest>=0.44",
+  "Flask-SQLAlchemy>=3.1",
+  "Flask-Migrate>=4.0",
+  "Flask-JWT-Extended>=4.6",
+  "Flask-CORS>=4.0",
+  "Flask-Limiter>=3.7",
+  "marshmallow>=3.21",
+  "SQLAlchemy>=2.0",
+  "pymssql>=2.3",
+  "structlog>=24.0",
+  "python-dotenv>=1.0",
+  "httpx>=0.27",
+  "argon2-cffi>=23.1",
+  "redis>=5.0",
+  "gunicorn>=22.0",
+  "azure-storage-blob>=12.20",
+]
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-flask>=1.3",
+  "factory_boy>=3.3",
+  "testcontainers[postgres]>=4.0",
+  "ruff>=0.6",
+]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.ruff]
+line-length = 100
