@@ -20,7 +20,12 @@ _VALID_OVERRIDES = {'auto', 'winter', 'spring', 'summer', 'autumn', 'off'}
 
 
 def _current_season() -> dict:
-    return SiteSetting.get(_SEASON_KEY, _DEFAULT_SEASON)
+    try:
+        result = SiteSetting.get(_SEASON_KEY, _DEFAULT_SEASON)
+        return result if result is not None else _DEFAULT_SEASON
+    except Exception:
+        db.session.rollback()
+        return _DEFAULT_SEASON
 
 
 # ── Public: read current season ───────────────────────────────────────────────
@@ -34,8 +39,13 @@ def get_season():
 
 @blp.route('/settings/season/stream')
 def season_stream():
-    q = subscribe()
+    # Compute the initial value and immediately release the DB connection.
+    # SSE streams are long-lived; holding a connection for their duration would
+    # exhaust the pool under concurrent visitors and cause 500s on other routes.
     initial = json.dumps(_current_season())
+    db.session.remove()
+
+    q = subscribe()
 
     def generate():
         try:

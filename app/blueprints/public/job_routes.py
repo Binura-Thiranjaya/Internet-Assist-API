@@ -32,7 +32,10 @@ def create_job(payload):
             from app.utils.response import error_envelope
             return error_envelope('invalid_file', 'CV must be a PDF, DOC, or DOCX file.', None, 422)
         cv_original_name = secure_filename(upload.filename)
-        cv_file_name = save_document(upload.read(), ext)
+        try:
+            cv_file_name = save_document(upload.read(), ext)
+        except Exception:
+            cv_file_name = None  # proceed without CV storage if encryption fails
 
     application = JobApplication(
         full_name=payload['full_name'],
@@ -81,5 +84,8 @@ def create_job(payload):
     except Exception:
         pass
 
-    log_audit_action(action='public_job_created', entity='job_application', entity_id=application.id, ip=request.remote_addr)
+    try:
+        log_audit_action(action='public_job_created', entity='job_application', entity_id=application.id, ip=request.remote_addr)
+    except Exception:
+        pass
     return envelope(data={'id': application.id, 'status': application.status}, status=201)
